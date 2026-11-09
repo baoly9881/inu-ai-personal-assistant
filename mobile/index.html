@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f5ed" />
+    <meta name="description" content="INU AI — Your Personal AI Companion" />
+    <title>INU AI — Personal Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="INU AI home"><span class="brand-mark">✧</span><span>INU <b>AI</b></span></a>
+        <div class="top-actions"><span class="status-pill"><i></i><span data-i18n="ready">Sẵn sàng</span></span><button class="icon-button" id="settingsBtn" aria-label="Settings">⚙</button></div>
+      </header>
+
+      <main id="mainContent">
+        <section class="screen active" id="screen-home" data-screen="home">
+          <div class="hero-card">
+            <div class="hero-copy"><p class="eyebrow" data-i18n="dailyCompanion">NGƯỜI BẠN ĐỒNG HÀNH MỖI NGÀY</p><h1 data-i18n="hello">Xin chào, hôm nay bạn thế nào?</h1><p data-i18n="heroSub">INU luôn ở đây để lắng nghe và giúp bạn sắp xếp mọi thứ.</p><button class="primary-button" data-go="chat" data-i18n="talkToInu">Trò chuyện với INU <span>↗</span></button></div>
+            <div class="spirit-wrap"><div class="spirit-orbit"></div><div class="spirit" aria-label="INU spirit mascot"><span class="spirit-glow"></span><span class="spirit-eye eye-left"></span><span class="spirit-eye eye-right"></span><span class="spirit-mouth"></span><span class="spirit-star">✦</span></div><span class="sparkle sparkle-one">✧</span><span class="sparkle sparkle-two">✦</span></div>
+          </div>
+          <div class="section-heading"><div><p class="eyebrow" data-i18n="overview">TỔNG QUAN</p><h2 data-i18n="today">Hôm nay</h2></div><span class="date-chip" id="todayDate"></span></div>
+          <div class="overview-grid">
+            <button class="feature-card journal-feature" data-go="journal"><span class="feature-icon">✎</span><span class="feature-title" data-i18n="journal">Nhật ký</span><strong id="journalCount">0</strong><small data-i18n="entriesSaved">ghi chú đã lưu</small></button>
+            <button class="feature-card task-feature" data-go="tasks"><span class="feature-icon">✓</span><span class="feature-title" data-i18n="reminders">Nhắc việc</span><strong id="taskCount">0</strong><small data-i18n="tasksPending">việc cần làm</small></button>
+          </div>
+          <div class="section-heading compact"><div><p class="eyebrow" data-i18n="forYou">DÀNH CHO BẠN</p><h2 data-i18n="quickStart">Bắt đầu nhanh</h2></div></div>
+          <div class="quick-list"><button class="quick-item" data-go="chat"><span class="quick-icon mint">✧</span><span><b data-i18n="askAnything">Hỏi INU bất cứ điều gì</b><small data-i18n="askAnythingSub">Cùng suy nghĩ và tìm giải pháp</small></span><span class="chevron">›</span></button><button class="quick-item" data-go="journal"><span class="quick-icon peach">▤</span><span><b data-i18n="writeThoughts">Ghi lại suy nghĩ</b><small data-i18n="writeThoughtsSub">Một chút thời gian cho bản thân</small></span><span class="chevron">›</span></button><button class="quick-item" data-go="tasks"><span class="quick-icon lavender">◷</span><span><b data-i18n="planDay">Lên kế hoạch trong ngày</b><small data-i18n="planDaySub">Đừng để quên việc quan trọng</small></span><span class="chevron">›</span></button></div>
+        </section>
+
+        <section class="screen" id="screen-chat" data-screen="chat">
+          <div class="screen-heading"><p class="eyebrow">INU SPIRIT</p><h1 data-i18n="chatTitle">Trò chuyện với INU</h1><p data-i18n="chatSub">Một người bạn nhỏ luôn sẵn sàng lắng nghe.</p></div>
+          <div class="chat-notice"><span>✧</span><span data-i18n="mockNotice">Bạn đang dùng chế độ AI demo. Câu trả lời được tạo cục bộ, chưa kết nối AI trực tuyến.</span></div>
+          <div class="chat-thread" id="chatThread" aria-live="polite"><div class="message assistant"><span class="message-avatar">✧</span><div class="bubble"><b>INU</b><p data-i18n="welcomeChat">Chào bạn! Mình có thể giúp gì cho bạn hôm nay?</p></div></div></div>
+          <div class="suggestion-row"><button class="suggestion" data-prompt="Help me plan my day">✦ <span data-i18n="suggestPlan">Lên kế hoạch ngày</span></button><button class="suggestion" data-prompt="Give me a little motivation">♡ <span data-i18n="suggestMotivate">Động viên mình</span></button></div>
+          <form id="chatForm" class="composer"><input id="chatInput" autocomplete="off" placeholder="Nhắn tin cho INU..." aria-label="Message INU"/><button class="send-button" type="submit" aria-label="Send">↑</button></form>
+        </section>
+
+        <section class="screen" id="screen-journal" data-screen="journal">
+          <div class="screen-heading row-heading"><div><p class="eyebrow" data-i18n="yourSpace">KHÔNG GIAN CỦA BẠN</p><h1 data-i18n="journalTitle">Nhật ký</h1><p data-i18n="journalSub">Lưu giữ những điều đáng nhớ.</p></div><button class="primary-button small" id="newJournalBtn" data-i18n="newEntry">+ Viết mới</button></div>
+          <label class="search-box"><span>⌕</span><input id="journalSearch" placeholder="Tìm trong nhật ký..." data-i18n-placeholder="searchJournal"/></label>
+          <div id="journalList" class="entry-list"></div>
+          <div id="journalEmpty" class="empty-state"><span>✎</span><h3 data-i18n="emptyJournal">Trang đầu tiên đang chờ bạn</h3><p data-i18n="emptyJournalSub">Viết vài dòng về ngày hôm nay nhé.</p><button class="secondary-button" id="emptyJournalBtn" data-i18n="writeFirst">Viết nhật ký đầu tiên</button></div>
+        </section>
+
+        <section class="screen" id="screen-tasks" data-screen="tasks">
+          <div class="screen-heading row-heading"><div><p class="eyebrow" data-i18n="stayOnTrack">GIỮ NHỊP NGÀY MỚI</p><h1 data-i18n="tasksTitle">Nhắc việc</h1><p data-i18n="tasksSub">Từng bước nhỏ, tiến gần mục tiêu.</p></div><button class="primary-button small" id="newTaskBtn" data-i18n="addTask">+ Thêm việc</button></div>
+          <div class="task-summary"><div><span data-i18n="pending">Cần hoàn thành</span><strong id="pendingCount">0</strong></div><div class="summary-icon">✓</div></div>
+          <div id="taskList" class="task-list"></div>
+          <div id="taskEmpty" class="empty-state"><span>◷</span><h3 data-i18n="emptyTasks">Lịch trình đang thông thoáng</h3><p data-i18n="emptyTasksSub">Thêm một việc cần nhớ để bắt đầu.</p><button class="secondary-button" id="emptyTaskBtn" data-i18n="addFirstTask">Thêm nhắc việc đầu tiên</button></div>
+        </section>
+
+        <section class="screen" id="screen-profile" data-screen="profile">
+          <div class="screen-heading"><p class="eyebrow" data-i18n="personalize">CÁ NHÂN HÓA</p><h1 data-i18n="profileTitle">Không gian của bạn</h1><p data-i18n="profileSub">Điều chỉnh INU theo cách bạn thích.</p></div>
+          <div class="profile-card"><div class="profile-avatar">✧</div><div><b>INU AI</b><small data-i18n="localDemo">Bản dùng thử trên thiết bị</small></div></div>
+          <div class="settings-group"><h3 data-i18n="preferences">Tùy chọn</h3><div class="setting-row"><span><b data-i18n="language">Ngôn ngữ</b><small data-i18n="languageSub">Chọn ngôn ngữ hiển thị</small></span><select id="languageSelect" aria-label="Language"><option value="vi">Tiếng Việt</option><option value="en">English</option></select></div><button class="setting-row setting-button" id="memoryOpen"><span><b data-i18n="memory">AI Memory</b><small data-i18n="memorySub">Những điều bạn đã cho INU ghi nhớ</small></span><span>›</span></button><button class="setting-row setting-button" id="exportData"><span><b data-i18n="exportData">Xuất dữ liệu</b><small data-i18n="exportSub">Tải bản sao dữ liệu demo</small></span><span>↓</span></button></div>
+          <p class="version-note">INU AI · MVP 1.0.0 · Mock AI</p>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Main navigation"><button class="nav-item active" data-nav="home"><span>⌂</span><small data-i18n="home">Trang chủ</small></button><button class="nav-item" data-nav="chat"><span>✧</span><small data-i18n="ai">AI</small></button><button class="nav-item" data-nav="journal"><span>▤</span><small data-i18n="journal">Nhật ký</small></button><button class="nav-item" data-nav="tasks"><span>◷</span><small data-i18n="tasks">Nhắc việc</small></button><button class="nav-item" data-nav="profile"><span>○</span><small data-i18n="profile">Cá nhân</small></button></nav>
+    </div>
+
+    <dialog id="journalDialog" class="app-dialog"><form method="dialog" id="journalForm"><div class="dialog-header"><div><p class="eyebrow" data-i18n="yourJournal">NHẬT KÝ CỦA BẠN</p><h2 id="journalDialogTitle" data-i18n="newEntry">Viết mới</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></div><input type="hidden" id="journalId"/><label data-i18n="entryTitle">Tiêu đề</label><input id="journalTitleInput" maxlength="100" required placeholder="Một ngày đáng nhớ..."/><label data-i18n="yourThoughts">Nội dung</label><textarea id="journalContentInput" rows="6" required placeholder="Hôm nay mình cảm thấy..."></textarea><div class="dialog-actions"><button class="secondary-button" value="cancel" data-i18n="cancel">Hủy</button><button class="primary-button" id="saveJournalBtn" value="default" data-i18n="save">Lưu lại</button></div></form></dialog>
+
+    <dialog id="taskDialog" class="app-dialog"><form method="dialog" id="taskForm"><div class="dialog-header"><div><p class="eyebrow" data-i18n="smallSteps">TỪNG BƯỚC NHỎ</p><h2 id="taskDialogTitle" data-i18n="newTask">Thêm nhắc việc</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></div><input type="hidden" id="taskId"/><label data-i18n="taskName">Tên công việc</label><input id="taskTitleInput" maxlength="120" required placeholder="Ví dụ: Uống nước..."/><label data-i18n="dateTime">Ngày và giờ</label><input id="taskDueInput" type="datetime-local" required/><label data-i18n="priority">Mức độ ưu tiên</label><select id="taskPriority"><option value="normal" data-i18n="normal">Bình thường</option><option value="high" data-i18n="high">Quan trọng</option></select><div class="dialog-actions"><button class="secondary-button" value="cancel" data-i18n="cancel">Hủy</button><button class="primary-button" value="default" data-i18n="save">Lưu lại</button></div></form></dialog>
+
+    <dialog id="memoryDialog" class="app-dialog"><form method="dialog" id="memoryForm"><div class="dialog-header"><div><p class="eyebrow">INU MEMORY</p><h2 data-i18n="memory">AI Memory</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></div><p class="dialog-help" data-i18n="memoryExplain">Chỉ lưu những điều bạn chủ động thêm. Bạn có thể xóa bất cứ lúc nào.</p><label data-i18n="rememberThis">INU nên ghi nhớ điều gì?</label><input id="memoryInput" maxlength="240" placeholder="Ví dụ: Mình thích câu trả lời ngắn gọn..."/><div class="dialog-actions"><button class="secondary-button" value="cancel" data-i18n="close">Đóng</button><button class="primary-button" id="addMemoryBtn" value="default" data-i18n="addMemory">Lưu bộ nhớ</button></div><div id="memoryList" class="memory-list"></div></form></dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
