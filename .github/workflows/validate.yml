@@ -1,0 +1,24 @@
+name: Validate INU AI MVP
+on:
+  push:
+  pull_request:
+jobs:
+  web-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run build
+  php-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: php -l backend/public/index.php
+      - run: php -l backend/app/Core/Router.php
+      - run: php -l backend/app/Controllers/HealthController.php
