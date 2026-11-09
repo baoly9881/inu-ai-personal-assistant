@@ -1,0 +1,3 @@
+<?php
+// Template only. Copy to database.php locally; do not commit secrets.
+return require __DIR__ . '/database.example.php';
